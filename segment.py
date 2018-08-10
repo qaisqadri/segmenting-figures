@@ -105,7 +105,7 @@ class Segmentation:
         #self.img = cv2.dilate(self.img,kernel,iterations = 1)
         #r,self.img = cv2.threshold(self.img,127,255,cv2.THRESH_BINARY_INV)
         
-        cv2.imwrite("blobb_LAP.png",self.img)
+        #cv2.imwrite("blobb_LAP.png",self.img)
     
     @classmethod
     def image_resize(cls, image, width = None, height = None, inter = cv2.INTER_AREA):
@@ -397,5 +397,5 @@ class Segmentation:
 
 if __name__=="__main__":
     obj=Segmentation()
-    print (obj.doSegmentation("test4.png",size_thresh=55))
+    obj.doSegmentation("test4.png",size_thresh=55)
 
