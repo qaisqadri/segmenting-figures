@@ -32,7 +32,7 @@ class Segmentation:
         
             self.ax,self.ay=0,0
             self.imgOriginal=cv2.imread(self.filename2)
-            self.img=cv2.cv2.cvtColor(self.imgOriginal, cv2.COLOR_BGR2GRAY)
+            self.img=cv2.cvtColor(self.imgOriginal, cv2.COLOR_BGR2GRAY)
             if self.img is None:
                 print("please pass a valid filename with extension ")
                 exit()
@@ -86,7 +86,7 @@ class Segmentation:
         self.img = cv2.dilate(self.img,kernel,iterations = 1)
         #self.img=cv2.Canny(self.img,100,200)
         #self.img=self.auto_canny(self.img)
-        
+        r,self.img = cv2.threshold(self.img,127,255,cv2.THRESH_BINARY_INV)
         self.img=cv2.Laplacian(self.img,cv2.CV_64F)
         #kernel = np.ones((1,18),np.uint8)
         
@@ -397,5 +397,5 @@ class Segmentation:
 
 if __name__=="__main__":
     obj=Segmentation()
-    obj.doSegmentation("test4.png",size_thresh=55)
+    print (obj.doSegmentation("test5.png",size_thresh=55))
 
